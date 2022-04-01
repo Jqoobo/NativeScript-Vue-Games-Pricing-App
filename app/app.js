@@ -1,5 +1,6 @@
 import Vue from 'nativescript-vue'
 import RadSideDrawer from 'nativescript-ui-sidedrawer/vue'
+import 'nativescript-tailwind/dist/tailwind.css'
 
 Vue.use(RadSideDrawer)
 
