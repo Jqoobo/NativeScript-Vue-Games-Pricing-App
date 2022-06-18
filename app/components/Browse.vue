@@ -89,6 +89,7 @@ export default {
     },
     onFocus(event) {
       this.getDataToFilter();
+      //TODO: ERROR WHEN TYPING ("onTextChange()") IS STARTED BEFORE APP GET DATA FROM STEAM
     },
     onTextChange(event) {
       if (this.textField == "") {
