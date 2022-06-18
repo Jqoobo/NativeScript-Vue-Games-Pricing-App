@@ -9,6 +9,13 @@
     </ActionBar>
 
     <GridLayout class="page__content">
+      <Label
+        class="page__content-placeholder"
+        :text="message"
+        visibility="hidden"
+      />
+      <Label class="page__content-icon fas" text.decode="&#xf002;" />
+      <Label class="page__content-placeholder" :text="message" />
       <TextField
         v-model="textField"
         hint="Wpisz nazwę gry"
@@ -33,16 +40,13 @@
         for="item in gameListFiltered"
       >
         <v-template>
-          <Button class="text-sm" :text="`${item.name} - game name`" />
+          <Button
+            class="text-sm"
+            :text="`${item.name}`"
+            @tap="onTapButtonFirst($event,item.appid)"
+          />
         </v-template>
       </ListView>
-      <Label
-        class="page__content-placeholder"
-        :text="message"
-        visibility="hidden"
-      />
-      <Label class="page__content-icon fas" text.decode="&#xf002;" />
-      <Label class="page__content-placeholder" :text="message" />
     </GridLayout>
   </Page>
 </template>
@@ -87,14 +91,20 @@ export default {
       this.getDataToFilter();
     },
     onTextChange(event) {
+      if (this.textField == "") {
+        return (this.showComponentWhenTyped = false);
+      }
       this.filterData();
       if (this.gameListFiltered.length != 0) {
         this.textFieldValue = this.gameListFiltered[0].name;
         console.log("----------------------", this.gameListFiltered[0].name);
-      } else {
-        this.textFieldValue = "brak podanej gry";
+        return (this.showComponentWhenTyped = true);
       }
-      this.showComponentWhenTyped = true;
+      this.textFieldValue = "brak podanej gry";
+    },
+    onTapButtonFirst(event,appid) {
+      console.log("nacisnałeś button o id:",appid);
+
     },
     getDataToFilter() {
       if (this.gameList.length == 0) {
