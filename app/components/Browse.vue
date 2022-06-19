@@ -14,9 +14,8 @@
         :text="message"
         visibility="hidden"
       />
-      <Label class="page__content-icon fas" text.decode="&#xf002;" />
-      <Label class="page__content-placeholder" :text="message" />
       <TextField
+        class="page__content-search"
         v-model="textField"
         hint="Wpisz nazwę gry"
         secure="false"
@@ -29,21 +28,26 @@
         maxLength="20"
       >
       </TextField>
+      <Label class="page__content-icon fas" text.decode="&#xf002;" />
+      <Label class="page__content-placeholder" :text="message" />
+      
+      
       <Label
-        class="text-red-500 font-sans"
+        class="page__content-label"
         :text="textFieldValue"
         v-if="showComponentWhenTyped"
       />
       <ListView
-        class="text-red-500 font-sans"
+        class="page__content-list"
         v-if="showComponentWhenTyped"
         for="item in gameListFiltered"
       >
+      
         <v-template>
           <Button
             class="text-sm"
             :text="`${item.name}`"
-            @tap="onTapButtonFirst($event,item.appid)"
+            @tap="onTapButtonFirst($event, item.name, item.appid)"
           />
         </v-template>
       </ListView>
@@ -73,7 +77,7 @@ export default {
   },
   computed: {
     message() {
-      return "Wyszukajta byczku";
+      return "Wyszukaj gre";
     },
     textFieldValue() {
       return this.actualSearchedValue;
@@ -89,7 +93,6 @@ export default {
     },
     onFocus(event) {
       this.getDataToFilter();
-      //TODO: ERROR WHEN TYPING ("onTextChange()") IS STARTED BEFORE APP GET DATA FROM STEAM
     },
     onTextChange(event) {
       if (this.textField == "") {
@@ -101,11 +104,10 @@ export default {
         console.log("----------------------", this.gameListFiltered[0].name);
         return (this.showComponentWhenTyped = true);
       }
-      this.textFieldValue = "brak podanej gry";
+      this.textFieldValue = "Brak podanej gry";
     },
-    onTapButtonFirst(event,appid) {
-      console.log("nacisnałeś button o id:",appid);
-
+    onTapButtonFirst(event, name, appid) {
+      console.log("Nacisnałeś button o nazwie:", name, "i id:", appid);
     },
     getDataToFilter() {
       if (this.gameList.length == 0) {
