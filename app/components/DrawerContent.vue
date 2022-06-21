@@ -23,17 +23,10 @@
                 </GridLayout>
 
                 <GridLayout columns="auto, *"
-                            :class="'nt-drawer__list-item' + (selectedPage === 'Search' ? ' -selected': '')"
+                            :class="'nt-drawer__list-item' + (selectedPage === 'Gierka' ? ' -selected': '')"
                             @tap="onNavigationItemTap(Search)">
-                    <Label col="0" text.decode="&#xf002;" class="nt-icon fas"/>
-                    <Label col="1" text="Search" class="p-r-10"/>
-                </GridLayout>
-
-                <GridLayout columns="auto, *"
-                            :class="'nt-drawer__list-item' + (selectedPage === 'Featured' ? ' -selected': '')"
-                            @tap="onNavigationItemTap(Featured)">
                     <Label col="0" text.decode="&#xf005;" class="nt-icon fas"/>
-                    <Label col="1" text="Featured" class="p-r-10"/>
+                    <Label col="1" text="Gierka" class="p-r-10"/>
                 </GridLayout>
 
                 <StackLayout class="hr"/>

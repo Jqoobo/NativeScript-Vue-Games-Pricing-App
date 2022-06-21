@@ -66,6 +66,32 @@
   &-list:checked{
     color:black;
   }
+
+  &-box{
+    height: 25%;
+    width: 85%;
+    
+    
+  }
+
+  &-box1{
+    height: 40%;
+    width: 85%;
+    padding-top:150px;
+    border: 1px solid cadetblue;
+    border-radius: 15px;
+    
+    
+  }
+
+  &-box2{
+    height: 40%;
+    width: 85%;
+    padding-top:150px;
+    border: 1px solid cadetblue;
+    border-radius: 15px;
+    
+  }
 }
 
 // Drawer navigation custom styles
