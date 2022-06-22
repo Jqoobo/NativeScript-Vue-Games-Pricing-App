@@ -4,7 +4,7 @@
       <NavigationButton visibility="hidden" />
       <GridLayout columns="50, *">
         <Label class="action-bar-title" text="Gameify" colSpan="2" />
-        <!--<Label class="fas" text.decode="&#xf0c9;" @tap="onDrawerButtonTap" />-->
+        <Label class="fas" text.decode="&#xf0c9;" @tap="onDrawerButtonTap" />
       </GridLayout>
     </ActionBar>
 
@@ -30,8 +30,7 @@
       </TextField>
       <Label class="page__content-icon fas" text.decode="&#xf002;" />
       <Label class="page__content-placeholder" :text="message" />
-      
-      
+
       <Label
         class="page__content-label"
         :text="textFieldValue"
@@ -42,12 +41,11 @@
         v-if="showComponentWhenTyped"
         for="item in gameListFiltered"
       >
-      
         <v-template>
           <Button
             class="text-sm"
             :text="`${item.name}`"
-            @tap="onTapButtonFirst($event, item.name, item.appid)"
+            @tap="onTapButtonItem($event, item.name)"
           />
         </v-template>
       </ListView>
@@ -84,9 +82,9 @@ export default {
     },
   },
   methods: {
-    //    onDrawerButtonTap() {
-    //      utils.showDrawer();
-    //    },
+    onDrawerButtonTap() {
+      utils.showDrawer();
+    },
     onReturnPress(event) {
       console.log(this.textField);
       this.actualSearchedValue = this.textField;
@@ -106,8 +104,8 @@ export default {
       }
       this.textFieldValue = "Brak podanej gry";
     },
-    onTapButtonFirst(event, name, appid) {
-      console.log("Nacisnałeś button o nazwie:", name, "i id:", appid);
+    onTapButtonItem(event, name) {
+      console.log("Nacisnałeś button o nazwie:", name);
     },
     getDataToFilter() {
       if (this.gameList.length == 0) {
