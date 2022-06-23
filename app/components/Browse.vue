@@ -105,7 +105,8 @@ export default {
       this.textFieldValue = "Brak podanej gry";
     },
     onTapButtonItem(event, name) {
-      console.log("Nacisnałeś button o nazwie:", name);
+      const url = encodeURI("https://01ac-193-192-177-31.eu.ngrok.io/api/product?item=minecraft" +name);
+      console.log("Nacisnałeś button o nazwie:", name, "i urlu: ", url);
     },
     getDataToFilter() {
       if (this.gameList.length == 0) {

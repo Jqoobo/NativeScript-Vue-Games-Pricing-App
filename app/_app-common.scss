@@ -33,13 +33,11 @@
     vertical-align: center;
     horizontal-align: center;
   }
-
   &-icon {
     font-size: 72;
     vertical-align: top;
     margin-top: 20%;
   }
-
   &-search {
     text-align: center;
     background-color: cyan;
@@ -48,11 +46,9 @@
     vertical-align: top;
     margin-top: 0%;
   }
-
   &-label {
     visibility: hidden;
   }
-
   &-list {
     color: Black;
     font-family: sans-serif;
@@ -61,45 +57,45 @@
     background-color: white;
     font-size: 4px;
   }
-
   &-list:checked {
     color: black;
   }
-
   &-box {
     height: 25%;
     width: 90%;
+    vertical-align: top;
   }
-
   &-box1 {
-    height: 10%;
+    height: 5%;
     width: 90%;
-    padding-top: 150px;
     border: 10px solid cadetblue;
     border-radius: 10px;
+    text-align: center;
   }
-
   &-box2 {
-    height: 20%;
+    height: 10%;
     width: 30%;
-    padding-top: 150px;
     border: 1px solid cadetblue;
-    border-radius: 15px;
+    border-radius: 10px;
+    padding-top: 15px;
+    text-align: center;
   }
   &-box3 {
-    height: 20%;
+    height: 10%;
     width: 30%;
-    padding-top: 150px;
     border: 1px solid cadetblue;
-    border-radius: 15px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 15px;
+    float: left;
   }
   &-box4 {
-    height: 20%;
+    height: 10%;
     width: 30%;
-    padding-top: 150px;
     border: 1px solid cadetblue;
-    border-radius: 15px;
+    border-radius: 10px;
     font-size: 10;
+    vertical-align: top;
   }
 }
 
