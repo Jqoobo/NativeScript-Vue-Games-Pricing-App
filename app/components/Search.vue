@@ -17,17 +17,17 @@
         style="background-color: cadetblue; margin: 5"
       />
       <Header
-        v-if="offerList.steam"
+        v-if="offerList.kinguin"
         row="1"
-        :image-src="offerList.steam.appImg"
-        :title="offerList.steam.appTitle"
+        :image-src="offerList.kinguin.appImg"
+        :title="offerList.kinguin.appTitle"
       />
       <SingleItem
-        v-if="offerList.steam"
+        v-if="offerList.kinguin"
         row="2"
-        platform-name="Steam"
-        :page-url="offerList.steam.linkToStore"
-        :cost-value="offerList.steam.pricePLN"
+        platform-name="kinguin"
+        :page-url="offerList.kinguin.linkToStore"
+        :cost-value="offerList.kinguin.pricePLN"
       />
       <!--<SingleItem v-if="offerList.g2a"
       row="3"
@@ -35,8 +35,18 @@
         :page-url="offerList.g2a.linkToStore"
         :cost-value="offerList.g2a.pricePLN"
       />-->
-      <!--<SingleItem platform-name="Kinguin"/>
-      <SingleItem platform-name="Eneba"/>-->
+      <!--<SingleItem
+              v-if="offerList.kinguin"
+        row="4"
+        platform-name="kinguin"
+        :page-url="offerList.kinguin.linkToStore"
+        :cost-value="offerList.kinguin.pricePLN"/>
+      <SingleItem platform-name="Eneba"
+              v-if="offerList.kinguin"
+        row="2"
+        platform-name="kinguin"
+        :page-url="offerList.kinguin.linkToStore"
+        :cost-value="offerList.kinguin.pricePLN"/>-->
     </GridLayout>
   </Page>
 </template>
@@ -49,10 +59,12 @@ import SingleItem from "./SingleItem.vue";
 import Header from "./Header.vue";
 
 export default {
+  props: {
+    url: String,
+  },
   components: { SingleItem, Header },
   data() {
     return {
-      gameNameUrl: "minecraft",
       offerList: [],
     };
   },
@@ -69,13 +81,15 @@ export default {
       utils.showDrawer();
     },
     uzupelnijButton() {
+      console.log(this.$props.url);
       this.undefinedFunction();
     },
     async undefinedFunction() {
       console.log("Wysłano zapytanie");
       axios
         .get(
-          "https://8d06-193-192-177-31.eu.ngrok.io/api/product?item=minecraft"
+          this.$props.url
+          //"https://fdeb-193-192-177-31.eu.ngrok.io/api/product?item=minecraft"
         )
         .then((response) => {
           console.log("Pobrano dane\n", response);

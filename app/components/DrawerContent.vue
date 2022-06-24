@@ -85,9 +85,5 @@
 </script>
 
 <style scoped lang="scss">
-    // Start custom common variables
     @import '@nativescript/theme/scss/variables/blue';
-    // End custom common variables
-
-    // Custom styles
 </style>

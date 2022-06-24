@@ -21,7 +21,7 @@
         secure="false"
         keyboardType="text"
         returnKeyType="done"
-        @returnPress="onReturnPress($event)"
+        @returnPress="onReturnPress($event, textField)"
         @focus="onFocus($event)"
         @textChange="onTextChange($event)"
         autocorrect="false"
@@ -58,8 +58,10 @@ import * as utils from "~/shared/utils";
 import { SelectedPageService } from "../shared/selected-page-service";
 import axios from "axios/dist/axios";
 import { textProperty } from "@nativescript/core/ui/text-base";
+import Search from "./Search.vue";
 
 export default {
+  components: { Search },
   data() {
     return {
       textField: "",
@@ -85,9 +87,29 @@ export default {
     onDrawerButtonTap() {
       utils.showDrawer();
     },
-    onReturnPress(event) {
-      console.log(this.textField);
+    onReturnPress(event, name) {
+      if(this.textField!="")
+      {
       this.actualSearchedValue = this.textField;
+      const itemUrl = encodeURI("https://fdeb-193-192-177-31.eu.ngrok.io/api/product?item=" +name);
+      this.$navigateTo(Search, {
+        transition: {
+          name: "slidetOP",
+          duration: 300,
+          curve: "easeIn" },
+        props: { url: itemUrl }
+      })
+      return;
+      }
+      alert({
+        title: "Hej!",
+        message: "Nie wpisano żadnej gry!",
+        okButtonText: "Zamknij"
+      }) 
+      .then(() => {
+      console.log("Alert dialog closed.");
+  });
+      
     },
     onFocus(event) {
       this.getDataToFilter();
@@ -105,8 +127,15 @@ export default {
       this.textFieldValue = "Brak podanej gry";
     },
     onTapButtonItem(event, name) {
-      const url = encodeURI("https://01ac-193-192-177-31.eu.ngrok.io/api/product?item=minecraft" +name);
-      console.log("Nacisnałeś button o nazwie:", name, "i urlu: ", url);
+      const itemUrl = encodeURI("https://fdeb-193-192-177-31.eu.ngrok.io/api/product?item=" +name);
+      console.log("Nacisnałeś button o nazwie:", name, "i urlu: ", itemUrl);
+      this.$navigateTo(Search, {
+      transition: {
+        name: "slidetOP",
+        duration: 300,
+        curve: "easeIn" },
+      props: { url: itemUrl }
+      });
     },
     getDataToFilter() {
       if (this.gameList.length == 0) {
@@ -132,9 +161,9 @@ export default {
         });
         console.log("gameListFiltered:\n", this.gameListFiltered);
       }
-    },
   },
-};
+}
+}
 </script>
 
 <style scoped lang="scss">

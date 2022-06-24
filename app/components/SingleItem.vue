@@ -1,8 +1,14 @@
 <template>
   <GridLayout columns="*,150,*,150,*" rows="50, *, 50">
-    <Label :text="`${costValue/100} zł`" row="0" col="1" backgroundColor="green" />
+    <Label
+      :text="`${costValue / 100} zł`"
+      row="0"
+      col="1"
+      backgroundColor="green"
+    />
     <Label :text="platformName" row="0" col="3" backgroundColor="green" />
-    <Button class="text-sm"
+    <Button
+      class="text-sm"
       :text="buyButtonText"
       row="2"
       col="1"
@@ -38,9 +44,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// Start custom common variables
 @import "@nativescript/theme/scss/variables/blue";
-// End custom common variables
-
-// Custom styles
 </style>
