@@ -1,4 +1,8 @@
-# mobile_project
-project
+# NativeScript based on Vue.js + TailwindCSS Android APP
 
-test readme
+After setting up with the project:
+
+```
+$ npm install
+$ ns run android
+```
