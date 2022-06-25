@@ -1,7 +1,7 @@
 <template>
   <GridLayout columns="*,150,*,150,*" rows="50, *, 50">
     <Label
-      :text="`${costValue / 100} zł`"
+      :text="`${costValue / 100}zł`"
       row="0"
       col="1"
       backgroundColor="green"

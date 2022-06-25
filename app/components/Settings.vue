@@ -26,7 +26,7 @@
     },
     computed: {
       message() {
-        return "<!-- Page content goes here -->";
+        return "Settings";
       }
     },
     methods: {
@@ -38,9 +38,5 @@
 </script>
 
 <style scoped lang="scss">
-    // Start custom common variables
-    @import '@nativescript/theme/scss/variables/blue';
-    // End custom common variables
-
-    // Custom styles
+@import '@nativescript/theme/scss/variables/blue';
 </style>

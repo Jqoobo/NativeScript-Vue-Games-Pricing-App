@@ -91,7 +91,7 @@ export default {
       if(this.textField!="")
       {
       this.actualSearchedValue = this.textField;
-      const itemUrl = encodeURI("https://fdeb-193-192-177-31.eu.ngrok.io/api/product?item=" +name);
+      const itemUrl = encodeURI("https://fe3d-193-192-177-31.eu.ngrok.io/api/product?item=" +name);
       this.$navigateTo(Search, {
         transition: {
           name: "slidetOP",
@@ -127,7 +127,7 @@ export default {
       this.textFieldValue = "Brak podanej gry";
     },
     onTapButtonItem(event, name) {
-      const itemUrl = encodeURI("https://fdeb-193-192-177-31.eu.ngrok.io/api/product?item=" +name);
+      const itemUrl = encodeURI("https://fe3d-193-192-177-31.eu.ngrok.io/api/product?item=" +name);
       console.log("Nacisnałeś button o nazwie:", name, "i urlu: ", itemUrl);
       this.$navigateTo(Search, {
       transition: {

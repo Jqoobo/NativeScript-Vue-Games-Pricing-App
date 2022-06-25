@@ -7,47 +7,41 @@
         <Label class="fas" text.decode="&#xf0c9;" @tap="onDrawerButtonTap" />
       </GridLayout>
     </ActionBar>
-    <GridLayout rows="100,100,100,100" class="page__content-grid">
-      <Button
+    <ScrollView>
+      <StackLayout>
+    <GridLayout rows="100,100,100,100,100" class="page__content-grid">
+      <Header v-if="offerList.steam"
         row="0"
-        text="wypełnij"
-        textAlignment="center"
-        class="page__content-box4"
-        @tap="uzupelnijButton($event)"
-        style="background-color: cadetblue; margin: 5"
+        :image-src="offerList.steam.appImg"
+        :title="offerList.steam.appTitle"
       />
-      <Header
-        v-if="offerList.kinguin"
+      <SingleItem v-if="offerList.steam"
         row="1"
-        :image-src="offerList.kinguin.appImg"
-        :title="offerList.kinguin.appTitle"
+        platform-name="Steam"
+        :page-url="offerList.steam.linkToStore"
+        :cost-value="offerList.steam.pricePLN"
       />
-      <SingleItem
-        v-if="offerList.kinguin"
+      <SingleItem v-if="offerList.g2a"
         row="2"
-        platform-name="kinguin"
-        :page-url="offerList.kinguin.linkToStore"
-        :cost-value="offerList.kinguin.pricePLN"
-      />
-      <!--<SingleItem v-if="offerList.g2a"
-      row="3"
         platform-name="G2A"
         :page-url="offerList.g2a.linkToStore"
         :cost-value="offerList.g2a.pricePLN"
-      />-->
-      <!--<SingleItem
-              v-if="offerList.kinguin"
+      />
+      <SingleItem v-if="offerList.kinguin"
+        row="3"
+        platform-name="Kinguin"
+        :page-url="offerList.kinguin.linkToStore"
+        :cost-value="offerList.kinguin.pricePLN"
+      />
+      <SingleItem v-if="offerList.eneba"
         row="4"
-        platform-name="kinguin"
-        :page-url="offerList.kinguin.linkToStore"
-        :cost-value="offerList.kinguin.pricePLN"/>
-      <SingleItem platform-name="Eneba"
-              v-if="offerList.kinguin"
-        row="2"
-        platform-name="kinguin"
-        :page-url="offerList.kinguin.linkToStore"
-        :cost-value="offerList.kinguin.pricePLN"/>-->
+        platform-name="Eneba"
+        :page-url="offerList.eneba.linkToStore"
+        :cost-value="offerList.eneba.pricePLN"
+      />
     </GridLayout>
+      </StackLayout>
+    </ScrollView>
   </Page>
 </template>
 
@@ -70,6 +64,7 @@ export default {
   },
   mounted() {
     SelectedPageService.getInstance().updateSelectedPage("Search");
+    this.getGamesInformationAndStores();
   },
   computed: {
     message() {
@@ -80,12 +75,8 @@ export default {
     onDrawerButtonTap() {
       utils.showDrawer();
     },
-    uzupelnijButton() {
-      console.log(this.$props.url);
-      this.undefinedFunction();
-    },
-    async undefinedFunction() {
-      console.log("Wysłano zapytanie");
+    async getGamesInformationAndStores() {
+      console.log("Wysłano zapytanie\n", this.$props.url);
       axios
         .get(
           this.$props.url
@@ -104,5 +95,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 @import "@nativescript/theme/scss/variables/blue";
 </style>

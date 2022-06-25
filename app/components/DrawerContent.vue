@@ -2,18 +2,12 @@
     <GridLayout rows="auto, *" class="nt-drawer__content">
         <StackLayout row="0" class="nt-drawer__header">
             <Image class="nt-drawer__header-image fas t-36" src.decode="font://&#xf2bd;"/>
-            <Label class="nt-drawer__header-brand" text="Jacob"/>
-            <Label class="nt-drawer__header-footnote" text="krzepka@mail.com"/>
+            <Label class="nt-drawer__header-brand" text="Gameify"/>
+            <Label class="nt-drawer__header-footnote" text="Search best offer!"/>
         </StackLayout>
 
         <ScrollView row="1" class="nt-drawer__body">
             <StackLayout>
-                <GridLayout columns="auto, *"
-                            :class="'nt-drawer__list-item' + (selectedPage === 'Home' ? ' -selected': '')"
-                            @tap="onNavigationItemTap(Home)">
-                    <Label col="0" text.decode="&#xf015;" class="nt-icon fas"/>
-                    <Label col="1" text="Home" class="p-r-10"/>
-                </GridLayout>
 
                 <GridLayout columns="auto, *"
                             :class="'nt-drawer__list-item' + (selectedPage === 'Browse' ? ' -selected': '')"
@@ -29,25 +23,14 @@
                     <Label col="1" text="Gierka" class="p-r-10"/>
                 </GridLayout>
 
-                <StackLayout class="hr"/>
-
-                <GridLayout columns="auto, *"
-                            :class="'nt-drawer__list-item' + (selectedPage === 'Settings' ? ' -selected': '')"
-                            @tap="onNavigationItemTap(Settings)">
-                    <Label col="0" text.decode="&#xf013;" class="nt-icon fas"/>
-                    <Label col="1" text="Settings" class="p-r-10"/>
-                </GridLayout>
             </StackLayout>
         </ScrollView>
     </GridLayout>
 </template>
 
 <script>
-  import Home from "./Home";
   import Browse from "./Browse";
-  import Featured from "./Featured";
   import Search from "./Search";
-  import Settings from "./Settings";
   import * as utils from "~/shared/utils";
   import { SelectedPageService } from "~/shared/selected-page-service";
 
@@ -58,20 +41,14 @@
     },
     data() {
       return {
-        Home: Home,
         Browse: Browse,
-        Featured: Featured,
         Search: Search,
-        Settings: Settings,
         selectedPage: ""
       };
     },
     components: {
-      Home,
       Browse,
-      Featured,
       Search,
-      Settings
     },
     methods: {
       onNavigationItemTap(component) {
