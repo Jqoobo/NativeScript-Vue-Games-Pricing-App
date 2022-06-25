@@ -27,7 +27,7 @@
 
 NativeScript-Vue is an MIT-licensed open source project made possible by our sponsors:
 
-# NativeScript Vue
+# NativeScript Vue + TailwindCSS
 
 This project integrates [Vue](https://vuejs.org/) and [NativeScript](https://www.nativescript.org/), allowing you to build cross-platform iOS and Android apps using Vue.
 
