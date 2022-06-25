@@ -1,8 +1,8 @@
-<template>
-  <GridLayout columns="*,300,*" rows="50, *, 50">
-    <Image :src="imageSrc" row="0" col="1" backgroundColor="green" />
-    <Label :text="title" row="2" col="1" backgroundColor="green" />
-  </GridLayout>
+<template class="template">
+  <StackLayout class="page__content-headers" orientation="vertical" width="1650px" height="600px" >
+    <Label class="label_header" :text="title" width="500px" horizontal-align="center"/>
+    <Image :src="imageSrc" width="1500px" />
+  </StackLayout>
 </template>
 
 <script>

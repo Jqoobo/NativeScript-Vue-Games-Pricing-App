@@ -3,8 +3,7 @@
     <ActionBar class="action-bar">
       <NavigationButton visibility="hidden" />
       <GridLayout columns="50, *">
-        <Label class="action-bar-title" text="Gameify" colSpan="2" />
-        <Label class="fas" text.decode="&#xf0c9;" @tap="onDrawerButtonTap" />
+        <Image class="logo" src="https://media.discordapp.net/attachments/910979743137009714/990368859540316211/logoGameifyBlack.png" colSpan="2" />
       </GridLayout>
     </ActionBar>
 
@@ -17,7 +16,7 @@
       <TextField
         class="page__content-search"
         v-model="textField"
-        hint="Wpisz nazwę gry"
+        hint="Wpisz nazwę gry..."
         secure="false"
         keyboardType="text"
         returnKeyType="done"
@@ -43,7 +42,7 @@
       >
         <v-template>
           <Button
-            class="text-sm"
+            class="page__content-button"
             :text="`${item.name}`"
             @tap="onTapButtonItem($event, item.name)"
           />
@@ -77,7 +76,7 @@ export default {
   },
   computed: {
     message() {
-      return "Wyszukaj gre";
+      return "Wyszukaj grę...";
     },
     textFieldValue() {
       return this.actualSearchedValue;
@@ -91,7 +90,7 @@ export default {
       if(this.textField!="")
       {
       this.actualSearchedValue = this.textField;
-      const itemUrl = encodeURI("https://fe3d-193-192-177-31.eu.ngrok.io/api/product?item=" +name);
+      const itemUrl = encodeURI("https://beab-193-19-165-79.eu.ngrok.io/api/product?item=" +name);
       this.$navigateTo(Search, {
         transition: {
           name: "slidetOP",
@@ -127,7 +126,7 @@ export default {
       this.textFieldValue = "Brak podanej gry";
     },
     onTapButtonItem(event, name) {
-      const itemUrl = encodeURI("https://fe3d-193-192-177-31.eu.ngrok.io/api/product?item=" +name);
+      const itemUrl = encodeURI("https://beab-193-19-165-79.eu.ngrok.io/api/product?item=" +name);
       console.log("Nacisnałeś button o nazwie:", name, "i urlu: ", itemUrl);
       this.$navigateTo(Search, {
       transition: {
